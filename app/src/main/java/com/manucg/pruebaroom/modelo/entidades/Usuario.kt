@@ -13,10 +13,10 @@ data class Usuario(
     // ColumnInfo nos sirve para definir una columna de nuestra tabla
     @ColumnInfo(name = "nombre")
     var nombre: String,
-    @ColumnInfo(name = "genero")
-    var genero: String = "Sin especificar",
     @ColumnInfo(name = "edad")
-    var edad: Int
+    var edad: Int,
+    @ColumnInfo(name = "genero")
+    var genero: String = "Sin especificar"
 ) : Serializable {
 
     // Clave primaria autoincremental
@@ -34,10 +34,18 @@ data class Usuario(
 
     // Inicializador que se ejecuta al crear una instancia de Usuario
     init {
-        // Si la edad es mayor o igual a 18, entonces se considera mayor de edad y se actualiza el valor de "mayorEdad"
         if (edad >= 18)
             mayorEdad = "Si"
         else
             mayorEdad = "No"
+    }
+
+    override fun toString(): String {
+        return "Usuario(" +
+                "idUsuario=$idUsuario," +
+                " nombre='$nombre'," +
+                " edad=$edad," +
+                " genero='$genero'," +
+                " mayorEdad='$mayorEdad')"
     }
 }
