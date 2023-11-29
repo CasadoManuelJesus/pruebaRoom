@@ -32,6 +32,19 @@ data class Usuario(
     @Ignore
     var comentarios: MutableList<String> = mutableListOf()
 
+    //Añado una nueva columna llamada descripción
+    @ColumnInfo(name = "descripcion")
+    var descripcion :String ?=null
+
+    //prueba migracion con dos cambios
+    @ColumnInfo(name= "prueba1")
+    var prueba1 : String ?= "Texto de prueba 1"
+
+    @ColumnInfo(name="prueba2")
+    var prueba2 : Int ?= 0
+
+
+
     // Inicializador que se ejecuta al crear una instancia de Usuario
     init {
         if (edad >= 18)
@@ -46,6 +59,10 @@ data class Usuario(
                 " nombre='$nombre'," +
                 " edad=$edad," +
                 " genero='$genero'," +
-                " mayorEdad='$mayorEdad')"
+                " mayorEdad='$mayorEdad',"+
+                //Añado el nuevo campo al metodo
+                " prueba1='$prueba1',"+
+                " prueba2='$prueba2',"+
+                " descripcion='$descripcion')"
     }
 }
